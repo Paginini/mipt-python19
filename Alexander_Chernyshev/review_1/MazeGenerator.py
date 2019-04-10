@@ -1,6 +1,7 @@
 import sys
-from Graph import *
-from InOut import *
+from Graph import Graph, dfs_generation, kruskal_generation
+from Maze import Maze, create_maze, print_maze, bfs
+from InOut import open_maze, write_maze
 
 algo = int(sys.argv[1])
 
@@ -9,7 +10,8 @@ def main(algo):
     print('New/load ? n / l')
     ans = input()
     if ans == 'n':
-        maze_height, maze_width = map(int, input("Enter the size of your maze (height x width)\n").split())
+        input_message = "Enter the size of your maze (height x width)\n"
+        maze_height, maze_width = map(int, input(input_message).split())
         graph = Graph(maze_height, maze_width)
         if algo == 1:
             dfs_generation(graph)

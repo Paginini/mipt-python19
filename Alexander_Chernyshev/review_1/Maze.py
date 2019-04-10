@@ -54,27 +54,28 @@ def bfs(m):
         neighbours = []
         for i in range(4):
             dx, dy = steps[i]
-            if m.field[y + dy][x + dx] == 0 and (y + dy, x + dx) not in visited:
+            if m.field[y+dy][x+dx] == 0 and (y+dy, x+dx) not in visited:
                 neighbours.append((y + dy, x + dx))
         return neighbours
 
     while finish_point not in visited:
-        current = queue.pop(0)
-        current_neighbours = get_neighbours(current)
+        cur_p = queue.pop(0)
+        current_neighbours = get_neighbours(cur_p)
         for x in current_neighbours:
             queue.append(x)
-            visited[x] = visited[current] + 1
+            visited[x] = visited[cur_p] + 1
 
-    current = finish_point
+    cur_p = finish_point
     finish_y, finish_x = finish_point
     m.field[finish_y][finish_x] = 2
 
-    while current != start_point:
-        y, x = current
+    while cur_p != start_point:
+        y, x = cur_p
         steps = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         for i in steps:
             dy, dx = i
-            if (y + dy, x + dx) in visited and visited[(y + dy, x + dx)] < visited[current]:
-                current = (y + dy, x + dx)
+            if (y+dy, x+dx) in visited and visited[(y+dy, x+dx)] < visited[cur_p]:
+                cur_p = (y + dy, x + dx)
                 m.field[y + dy][x + dx] = 2
                 break
+

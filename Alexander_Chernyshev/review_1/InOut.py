@@ -1,14 +1,15 @@
-from Maze import *
+from Maze import Maze
 
 
 def open_maze(file_name):
     f = open(file_name)
-    h, w = map(int, f.read(4).split())
-    m = Maze(h, w)
-    i = 0
+    lines = []
     for line in f:
-        m.field[i] = [int(x) for x in line if x != '\n']
-        i += 1
+        lines.append(line)
+    h, w = map(int, lines[0].split())
+    m = Maze(h, w)
+    for k in range(1, len(lines)):
+        m.field[k-1] = [int(x) for x in lines[k] if x != '\n']
     return m
 
 
@@ -17,3 +18,4 @@ def write_maze(maze, file_name='output.txt'):
     f.write(str(maze.height//2) + ' ' + str(maze.width//2) + '\n')
     for line in maze.field:
         f.write("".join([str(x) for x in line]) + '\n')
+

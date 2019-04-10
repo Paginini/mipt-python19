@@ -43,7 +43,7 @@ def dfs_generation(graph, start_h=0, start_w=0):
         neighbours = []
         for i in range(4):
             dx, dy = steps[i]
-            if (y + dy, x + dx) in graph.vertices and (y + dy, x+dx) not in visited:
+            if (y+dy, x+dx) in graph.vertices and (y+dy, x+dx) not in visited:
                 neighbours.append((y+dy, x+dx))
         return neighbours
 
