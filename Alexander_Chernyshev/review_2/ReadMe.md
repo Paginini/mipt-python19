@@ -16,6 +16,3 @@ Billie Eilish
 
 This list will be extended soon
 Working on ability to add new characters
-
-
-
